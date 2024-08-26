@@ -1,0 +1,163 @@
+version: '3'
+
+##### services #####
+services:
+
+  dataloader:
+    build: dataloader/.
+    hostname: dataloader
+    environment:
+      DELAY: ${DELAY:-2}
+      PASSWORD: ${PASSWORD:-SU2orange!}
+      SEED: ${SEED:-42}
+    entrypoint: ["/bin/bash", "-c", "dos2unix <run.sh | bash" ]
+    #entrypoint: ["/bin/bash"]
+    depends_on:
+      # - drill
+      - jupyter 
+
+  ### clients ###  
+  #drill#
+  # drill:
+  #   image: apache/drill:1.21.1
+  #   command: /bin/bash
+  #   tty: true
+  #   ports:
+  #   - "8047:8047"
+  #   - "31010:31010"
+  #   ulimits:
+  #     memlock: -1
+  #     nproc: 32768
+  #     nofile: 100000
+
+  jupyter:
+    image: ist769/jupyter_pyspark:20210924b 
+    hostname: jupyter
+    environment:
+      - GRANT_SUDO=yes
+      - JUPYTER_ENABLE_LAB=yes 
+      - JUPYTER_TOKEN=SU2orange!               
+    ports:
+      - "8888:8888"
+    volumes: 
+      - ./work:/home/jovyan/work
+      # - ../../datasets:/home/jovyan/datasets
+
+  
+  ### database servers ###  
+  #cassandra#
+  cassandra:
+    image: cassandra:3.11.16
+    hostname: cassandra
+    ports:
+    - 9042:9042
+    ulimits:
+      memlock: -1
+      nproc: 32768
+      nofile: 100000
+    volumes:
+      - cassandra-data-final:/var/lib/cassandra
+
+  #elasticsearch#
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.16
+    hostname: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch-data-final:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  #kibana#
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.16
+    hostname: kibana
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: SU2orange!
+      SERVER_SSL_ENABLED: "false"
+    depends_on:
+      - elasticsearch
+
+  #minio#
+  minio:
+    image: minio/minio:RELEASE.2023-02-10T18-48-39Z
+    hostname: minio
+    command: server /data --console-address ":9001"
+    ports:
+    - "9000:9000"
+    - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: SU2orange!
+    volumes:
+      - minio-data-final:/data 
+
+  #mongo#
+  mongo:
+    image: mongo:6.0
+    restart: always
+    hostname: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: mongopw
+    volumes:
+      - mongo-data-final:/data/db 
+
+
+  # neo4j#
+  neo4j:
+    image: neo4j:5.15
+    hostname: neo4j
+    ports:
+      - "7474:7474" #http
+    #  - "7473:7473" #https
+      - "7687:7687" #bolt
+    environment:
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_AUTH=none
+      - NEO4J_PLUGINS='["apoc", "graph-data-science"]'
+      - NEO4J_dbms_memory_pagecache_size=1G
+    volumes:
+      - neo4j-data-final:/data
+
+  
+
+##### volumes #####
+volumes:
+  cassandra-data-final:
+    driver: local
+  elasticsearch-data-final:
+    driver: local
+  minio-data-final:
+    driver: local
+  mongo-data-final:
+    driver: local
+  neo4j-data-final:
+    driver: local
+
+
+##### networks #####
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.11.12.0/24
+          gateway: 10.11.12.1
