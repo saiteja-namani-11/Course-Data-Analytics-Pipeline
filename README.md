@@ -142,7 +142,5 @@ The project follows a structured data processing workflow to ensure comprehensiv
 
 The Course Registration and Curricular Data Analysis project successfully demonstrates the ability to integrate, process, and analyze data in a distributed environment. The insights derived from this analysis provide valuable input for academic planning and resource allocation, contributing to the improvement of educational programs.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
