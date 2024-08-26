@@ -1,0 +1,158 @@
+[
+    {
+        "_id": "IST659",
+        "code": "IST659",
+        "name": "Data Administration Concepts and Database Management",
+        "description": "Definition, development, and management of databases for information systems. Data analysis techniques, data modeling, and schema design. Query languages and search specifications. Overview of file organization for databases. Data administration concepts and skills.",
+        "credits": 3,
+        "prerequisites": [],
+        "required_in_programs": [
+            "IS",
+            "DS"
+        ],
+        "elective_in_programs": [],
+        "key_assignments": [
+            "project"
+        ]
+    },
+    {
+        "_id": "IST722",
+        "code": "IST722",
+        "name": "Data Warehousing",
+        "description": "Introduction to concepts of business intelligence (BI) and the practice/techniques in building a BI solution. Focuses are on how to use data warehouses as a BI solution to make better organizational decisions.",
+        "credits": 3,
+        "prerequisites": [
+            "IST659"
+        ],
+        "required_in_programs": [],
+        "elective_in_programs": [
+            "IS"
+        ],
+        "key_assignments": [
+            "project",
+            "exam"
+        ]
+    },
+    {
+        "_id": "IST769",
+        "code": "IST769",
+        "name": "Advanced Big Data Management",
+        "description": "Analyze relational and non-relational databases and corresponding database management system architectures. Learn to build complex database objects to support a variety of needs from big data and traditional perspectives. Data systems performance, scalability, security.",
+        "credits": 3,
+        "prerequisites": [
+            "IST659"
+        ],
+        "required_in_programs": [],
+        "elective_in_programs": [
+            "DS"
+        ],
+        "key_assignments": [
+            "project",
+            "exam"
+        ]
+    },
+    {
+        "_id": "IST615",
+        "code": "IST615",
+        "name": "Cloud Management",
+        "description": "Cloud services creation and management. Practical experience in using, creating and managing digital services across data centers and hybrid clouds. Strategic choices for cloud digital service solutions across open data centers and software defined networks.",
+        "credits": 3,
+        "prerequisites": [],
+        "required_in_programs": [
+            "IS",
+            "DS"
+        ],
+        "elective_in_programs": [],
+        "key_assignments": [
+            "project",
+            "paper"
+        ]
+    },
+    {
+        "_id": "IST714",
+        "code": "IST714",
+        "name": "Cloud Architecture",
+        "description": "Advanced, lab-based exploration of enterprise cloud migration/adoption costs, planning and economics; cloud application/service design, network and data center resource orchestration. Topics also include cloud elastic sizing, risk management, governance, compliance and monitoring.",
+        "credits": 3,
+        "prerequisites": [
+            "IST615"
+        ],
+        "required_in_programs": [],
+        "elective_in_programs": [
+            "IS",
+            "DS"
+        ],
+        "key_assignments": [
+            "project"
+        ]
+    },
+    {
+        "_id": "IST621",
+        "code": "IST621",
+        "name": "Information Management and Technology",
+        "description": "Information and technology management overview with a focus on digital transformation. How information and technology managers create organizational, technological, and personal capabilities to succeed in a rapidly changing digital world.",
+        "credits": 3,
+        "prerequisites": [],
+        "required_in_programs": [
+            "IS"
+        ],
+        "elective_in_programs": [],
+        "key_assignments": [
+            "paper"
+        ]
+    },
+    {
+        "_id": "IST687",
+        "code": "IST687",
+        "name": "Introduction to Data Science",
+        "description": "Introduces information professionals to fundamentals about data and the standards, technologies, and methods for organizing, managing, curating, preserving, and using data. Discusses broader issues relating to data management, quality control and publication of data.",
+        "credits": 3,
+        "prerequisites": [],
+        "required_in_programs": [
+            "DS"
+        ],
+        "elective_in_programs": [
+            "IS"
+        ],
+        "key_assignments": [
+            "project",
+            "exam"
+        ]
+    },
+    {
+        "_id": "IST707",
+        "code": "IST707",
+        "name": "Applied Machine Learning",
+        "description": "General overview of industry standard machine learning techniques and algorithms. Focus on machine learning model building and optimization, real-world applications, and future directions in the field. Hands-on experience with modern data science packages.",
+        "credits": 3,
+        "prerequisites": [
+            "IST687"
+        ],
+        "required_in_programs": [
+            "DS"
+        ],
+        "elective_in_programs": [
+            "IS"
+        ],
+        "key_assignments": [
+            "exam"
+        ]
+    },
+    {
+        "_id": "IST718",
+        "code": "IST718",
+        "name": "Big Data Analytics",
+        "description": "A broad introduction to big data analytical and processing tools for information professionals. Students will develop a portfolio of theoretical and practical resources for several real-world case studies.",
+        "credits": 3,
+        "prerequisites": [
+            "IST687"
+        ],
+        "required_in_programs": [
+            "DS"
+        ],
+        "elective_in_programs": [],
+        "key_assignments": [
+            "project"
+        ]
+    }
+]

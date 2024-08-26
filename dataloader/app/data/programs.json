@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "IS",
+        "code": "IS",
+        "name": "Information Systems",
+        "type": "Masters",
+        "credits": 36,
+        "required_courses": [
+            "IST659",
+            "IST615",
+            "IST621"
+        ],
+        "elective_courses": [
+            "IST722",
+            "IST714",
+            "IST687",
+            "IST707"
+        ]
+    },
+    {
+        "_id": "DS",
+        "code": "DS",
+        "name": "Data Science",
+        "type": "Masters",
+        "credits": 34,
+        "required_courses": [
+            "IST659",
+            "IST615",
+            "IST687",
+            "IST718",
+            "IST707"
+        ],
+        "elective_courses": [
+            "IST769",
+            "IST714"
+        ]
+    },
+    {
+        "_id": "BDC",
+        "code": "BDC",
+        "name": "Data Engineering Certificate",
+        "type": "Certificate",
+        "credits": 9,
+        "required_courses": [
+            "IST659",
+            "IST722",
+            "IST769"
+        ]
+    },
+    {
+        "_id": "CCC",
+        "code": "CCC",
+        "name": "Cloud Computing Certificate",
+        "type": "Certificate",
+        "credits": 9,
+        "required_courses": [
+            "IST621",
+            "IST615",
+            "IST714"
+        ]
+    },
+    {
+        "_id": "MLC",
+        "code": "MLC",
+        "name": "Machine Learning Certificate",
+        "type": "Certificate",
+        "credits": 9,
+        "required_courses": [
+            "IST687",
+            "IST707",
+            "IST718"
+        ]
+    }
+]
